@@ -43,7 +43,6 @@ public class MetadataExtractorService {
 		List<String> links = jsoupDoc.select("a[href]").stream().map(element -> element.attr("abs:href"))
 				.filter(link -> isValidLink(url, link)) // 이 함수 수정 필요... ( link 가 상대 경로 문자열일 수도 있음. 지금 로직 수정 필요. )
 				.distinct().collect(Collectors.toList());
-
 		log.debug("[extractLinksFromPage] links ====> {}", links);
 		return links;
 	}

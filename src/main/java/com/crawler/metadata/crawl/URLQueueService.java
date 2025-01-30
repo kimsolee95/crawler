@@ -33,9 +33,7 @@ public class URLQueueService {
 	/**
 	 * 
 	 * seedUrl 에 할당된 queue link list 내부에 방문해야 할 url 추가
-	 * 
 	 * @param seedUrl
-	 * 
 	 * @param url
 	 * 
 	 */

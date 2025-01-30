@@ -146,7 +146,6 @@ public class CrawlerService {
 		// [1] domain 만 가져오기
 		// [2] robots.txt 찾아보기
 		// [3] robots.txt 반영
-
 		// 1. url 탐색 ( 동기 - BFS )
 		// 여러 url에 대한 작업을 멀티스레드로 하되, BFS 자체는 단일로..
 		// chunk 단위 지정 필요함.
@@ -195,12 +194,12 @@ public class CrawlerService {
 					e.printStackTrace();
 				} // 메인 스레드 멈춘 후, 5초 경과 후 다시 확인
 				continue;
+
 			}
 
 			if (visitedUrls.contains(url)) { // 방문한 적 있으면 그냥 다음 루프절로 순회
 				continue;
 			}
-
 			// CompletableFuture 활용하여 멀티 스레드 사용
 			CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
 				try {
