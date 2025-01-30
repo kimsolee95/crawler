@@ -152,10 +152,12 @@ public class CrawlerService {
 		// blocking queue ------------->>> 어떠게 queue 를 제대로 전달할지?....
 		// 해당 라인에서 계속해서 빈 배열 도출.... 동시성 문제???
 		Map<String, List<String>> seedUrlsMap = processParallelAllSeedUrls(seedUrls);
+
 		// 2. meta tag data 수집 ( 비동기 )
 		for (Map.Entry<String, List<String>> seedMap : seedUrlsMap.entrySet()) {
 			log.debug("seedMap ====> {}", seedMap);
 		}
+
 		// 3. kafka 같은 외부 대기열...
 	}
 
@@ -192,12 +194,12 @@ public class CrawlerService {
 					e.printStackTrace();
 				} // 메인 스레드 멈춘 후, 5초 경과 후 다시 확인
 				continue;
+
 			}
 
 			if (visitedUrls.contains(url)) { // 방문한 적 있으면 그냥 다음 루프절로 순회
 				continue;
 			}
-
 			// CompletableFuture 활용하여 멀티 스레드 사용
 			CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
 				try {
